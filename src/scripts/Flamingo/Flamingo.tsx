@@ -34,5 +34,7 @@ export default class Flamingo extends Bird {
   
   onBatDoneSonar() {
     print("BAT SONAR, BIYATCH");
+    
+    this.subordinateBird.disconnect(Bird.OnSpecial, this, "onBatDoneSonar");
   }
 }
