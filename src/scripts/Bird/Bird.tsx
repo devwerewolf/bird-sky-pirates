@@ -49,7 +49,7 @@ export default class Bird extends KinematicBody2D {
   
   public changeState(birdState: BirdState) {
     this.birdState = birdState;
-    this.emit_signal(this.birdStateSignals[this.birdState], this.get_path());
+    this.emit_signal(this.birdStateSignals[this.birdState], this);
   }
   
   public setTarget(target: godot.Vector2) {

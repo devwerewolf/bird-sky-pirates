@@ -7,6 +7,7 @@
 extents = Vector2( 30, 31 )
 
 [node name="Flamingo (Bird TEMPLATE)" type="KinematicBody2D"]
+modulate = Color( 0.803922, 0.164706, 0.956863, 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
