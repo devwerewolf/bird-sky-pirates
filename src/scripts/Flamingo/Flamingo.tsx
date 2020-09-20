@@ -2,6 +2,7 @@ import { property } from "../../../decorators";
 import Bird, { BirdState } from "../Bird/Bird";
 import Bat from "../Bat/Bat";
 import Peacock from "../Peacock/Peacock";
+import Crow from "../Crow/Crow";
 const { print } = godot;
 
 export default class Flamingo extends Bird {
@@ -44,7 +45,14 @@ export default class Flamingo extends Bird {
   
   //#region Bat
   onBatSonarDiscover(bat: Bat) {
-    print("Let's get this bread " + bat.name + "!");
+    // print("Let's get this bread " + bat.name + "!");
+    
+    const crows = this.subordinates.filter(bird => bird instanceof Crow) as Crow[];
+    crows.forEach(crow => {
+      // TODO: Check if crow is currently busy
+      crow.setTarget(bat.position);
+      crow.changeState(BirdState.Move);
+    });
   }
   
   onBatDoneMoving(bat: Bat) {
