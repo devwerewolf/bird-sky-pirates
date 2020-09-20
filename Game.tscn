@@ -11,12 +11,11 @@ position = Vector2( 133, 230 )
 birdState = 1
 
 [node name="Flamingo (Bird TEMPLATE)" parent="." instance=ExtResource( 1 )]
-position = Vector2( 338, 353 )
-subordinateNode = NodePath("../Bat (Bird TEMPLATE)")
+position = Vector2( 338, 352.056 )
+subordinateNode = NodePath("../Peacock (Bird TEMPLATE)")
 
 [node name="Peacock (Bird TEMPLATE)" parent="." instance=ExtResource( 3 )]
 position = Vector2( 769, 258 )
-birdState = 2
 
 [node name="Bat (Bird TEMPLATE)2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 857, 330 )

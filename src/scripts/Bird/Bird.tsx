@@ -29,9 +29,7 @@ export default class Bird extends KinematicBody2D {
   
   constructor() {
     super();
-  }
-  
-  _ready() {
+    
     this.birdStateSignals = {
       [BirdState.Idle]: Bird.OnIdle,
       [BirdState.Move]: Bird.OnMove,
@@ -45,7 +43,7 @@ export default class Bird extends KinematicBody2D {
     }
   }
   
-  _physics_process(fixedDelta: number) {
+  _process(delta: number) {
     this.birdStateFunctions[this.birdState]();
   }
   

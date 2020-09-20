@@ -5,7 +5,6 @@ export default class Peacock extends Bird {
   influenceArea: godot.Area2D;
   
   _ready() {
-    super._ready();
     this.influenceArea = this.get_node("./Influence Area") as godot.Area2D;
   }
   
@@ -20,5 +19,7 @@ export default class Peacock extends Bird {
         bird.changeState(BirdState.Move);
       }
     });
+    
+    this.changeState(BirdState.Idle);
   }
 }
