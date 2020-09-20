@@ -6,8 +6,6 @@ export default class Bat extends Bird {
   @signal static readonly OnSonarDiscover: string;
   
   special() {
-    // print("BAT DONE DID THE SPECIAL");
-    
     // [DEBUG] Pretend Sonar found gold
     this.emit_signal(Bat.OnSonarDiscover, this);
     

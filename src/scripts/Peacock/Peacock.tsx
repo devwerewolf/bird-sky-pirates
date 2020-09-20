@@ -22,8 +22,4 @@ export default class Peacock extends Bird {
     
     this.changeState(BirdState.Idle);
   }
-  
-  dummy() {
-    print("Dummy peacock " + this.name);
-  }
 }

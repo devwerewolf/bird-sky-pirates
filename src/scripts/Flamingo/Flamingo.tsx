@@ -45,8 +45,6 @@ export default class Flamingo extends Bird {
   
   //#region Bat
   onBatSonarDiscover(bat: Bat) {
-    // print("Let's get this bread " + bat.name + "!");
-    
     const crows = this.subordinates.filter(bird => bird instanceof Crow) as Crow[];
     crows.forEach(crow => {
       // TODO: Check if crow is currently busy
@@ -56,23 +54,19 @@ export default class Flamingo extends Bird {
   }
   
   onBatDoneMoving(bat: Bat) {
-    print("BAT IDLE, NERD");
-    
     bat.disconnect(Bird.OnIdle, this, "onBatDoneMoving");
     bat.connect(Bird.OnSpecial, this, "onBatDoneSonar");
     bat.changeState(BirdState.Special);
   }
   
   onBatDoneSonar(bat: Bat) {
-    print("BAT SONAR, BIYATCH");
-    
     bat.disconnect(Bird.OnSpecial, this, "onBatDoneSonar");
   }
   //#endregion
   
   //#region Peacock
   onPeacockIdle(peacock: Peacock) {
-    peacock.dummy();
+    // peacock.dummy();
   }
   //#endregion
 }
