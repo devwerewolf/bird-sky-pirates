@@ -6,8 +6,7 @@ const { print } = godot;
 
 export default class Flamingo extends Bird {
   @property({ type: godot.VariantType.TYPE_NODE_PATH }) subordinateNode: godot.VariantType.TYPE_NODE_PATH;
-  // private subordinateBird: Bird;
-  private subordinates: Bird[];
+  subordinates: Bird[];
   
   constructor() {
     super();
@@ -18,25 +17,14 @@ export default class Flamingo extends Bird {
     return this.subordinates.length;
   }
   
-  _ready() {
-    // // [DEBUG] Pretend this is somewhere smarter
-    // this.subordinateBird = this.get_node(this.subordinateNode.toString()) as Bat;
-    // this.subordinateBird.connect(Bird.OnIdle, this, "onBatDoneMoving");
-    
-    // this.subordinateBird = this.get_node(this.subordinateNode.toString()) as Peacock;
-    // this.subordinateBird.connect(Bird.OnIdle, this, "onPeacockIdle");
-    // this.subordinateBird.changeState(BirdState.Special);
-  }
-  
   public addSubordinates(birds: Bird[]) {
     birds.forEach(bird => {
       // Connect signal
       if (bird instanceof Bat) {
-        print("Ya working, son?")
         bird.connect(Bat.OnSonarDiscover, this, "onBatSonarDiscover");
       }
       
-      // Add to subordinates array
+      // Add to subordinates
       this.subordinates.push(bird);
     });
   }
@@ -44,8 +32,11 @@ export default class Flamingo extends Bird {
   public removeSubordinates(birds: Bird[]) {
     birds.forEach(bird => {
       // Disconnect signal
+      if (bird instanceof Bat) {
+        bird.disconnect(Bat.OnSonarDiscover, this, "onBatSonarDiscover");
+      }
       
-      // Remove from subordinates array
+      // Remove from subordinates
       const subordinateIndex = this.subordinates.indexOf(bird);
       this.subordinates.splice(subordinateIndex, 1);
     });

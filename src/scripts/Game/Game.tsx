@@ -9,10 +9,11 @@ export default class Game extends Node2D {
   private currentFlamingo: Flamingo;
   
   _ready() {
+    // Initialize
     this.birds = this.get_node("./Birds").get_children() as Bird[];
-    // print(this.birds);
     this.currentFlamingo = this.get_node(this.currentFlamingoPath.toString()) as Flamingo;
+    
+    // [DEBUG] Add all the subordinates!
     this.currentFlamingo.addSubordinates(this.birds);
-    print(this.currentFlamingo.subordinateCount);
   }
 }
