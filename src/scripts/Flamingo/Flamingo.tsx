@@ -19,11 +19,6 @@ export default class Flamingo extends Bird {
     this.subordinateBird.connect(Bird.OnIdle, this, "onBatDoneMoving");
   }
   
-  special() {
-    print("FLAMINGO");
-    this.changeState(BirdState.Idle);
-  }
-  
   onBatDoneMoving() {
     print("BAT IDLE, NERD");
     

@@ -45,13 +45,17 @@ export default class Bird extends KinematicBody2D {
     }
   }
   
-  _process(delta: number) {
+  _physics_process(fixedDelta: number) {
     this.birdStateFunctions[this.birdState]();
   }
   
   public changeState(birdState: BirdState) {
     this.birdState = birdState;
     this.emit_signal(this.birdStateSignals[this.birdState], this.get_path());
+  }
+  
+  public setTarget(target: godot.Vector2) {
+    this.target = target;
   }
   
   protected idle() {
@@ -76,8 +80,6 @@ export default class Bird extends KinematicBody2D {
   
   private positionIsWithinMargin(): boolean {
     const distanceFromTarget = this.position.distance_to(this.target);
-    godot.print(distanceFromTarget);
-    
     return distanceFromTarget <= this.moveMargin;
   }
 }
