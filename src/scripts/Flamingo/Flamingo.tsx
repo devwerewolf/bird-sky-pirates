@@ -50,23 +50,10 @@ export default class Flamingo extends Bird {
       // TODO: Check if crow is currently busy
       crow.setTarget(bat.position);
       crow.changeState(BirdState.Move);
+      
+      bat.setTarget(this.position);
+      bat.changeState(BirdState.Move);
     });
-  }
-  
-  onBatDoneMoving(bat: Bat) {
-    bat.disconnect(Bird.OnIdle, this, "onBatDoneMoving");
-    bat.connect(Bird.OnSpecial, this, "onBatDoneSonar");
-    bat.changeState(BirdState.Special);
-  }
-  
-  onBatDoneSonar(bat: Bat) {
-    bat.disconnect(Bird.OnSpecial, this, "onBatDoneSonar");
-  }
-  //#endregion
-  
-  //#region Peacock
-  onPeacockIdle(peacock: Peacock) {
-    // peacock.dummy();
   }
   //#endregion
 }

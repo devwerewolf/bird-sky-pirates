@@ -20,6 +20,7 @@ export default class Peacock extends Bird {
       }
     });
     
-    this.changeState(BirdState.Idle);
+    // TODO: Let Flamingo handle Idle
+    // this.changeState(BirdState.Idle);
   }
 }

@@ -9,6 +9,7 @@ export default class Bat extends Bird {
     // [DEBUG] Pretend Sonar found gold
     this.emit_signal(Bat.OnSonarDiscover, this);
     
-    this.changeState(BirdState.Idle);
+    // TODO: Let Flamingo handle Idle
+    // this.changeState(BirdState.Idle);
   }
 }
