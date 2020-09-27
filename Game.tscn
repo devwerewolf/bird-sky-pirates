@@ -26,7 +26,6 @@ birdState = 2
 
 [node name="Flamingo (Bird TEMPLATE)" parent="Birds" instance=ExtResource( 1 )]
 position = Vector2( 576, 78.056 )
-subordinateNode = NodePath("../Bat (Bird TEMPLATE)")
 
 [node name="Bat (Bird TEMPLATE)2" parent="Birds" instance=ExtResource( 2 )]
 position = Vector2( 857, 330 )
@@ -45,4 +44,5 @@ position = Vector2( 763, 252 )
 [node name="Level" type="Node" parent="."]
 
 [node name="Gold" parent="Level" instance=ExtResource( 6 )]
-position = Vector2( 169, 473 )
+position = Vector2( 169, 488 )
+amount = 15

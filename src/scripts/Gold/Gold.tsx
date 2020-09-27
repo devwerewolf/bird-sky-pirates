@@ -1,10 +1,11 @@
+import { property } from "../../../decorators";
 import Bat from "../Bat/Bat";
 import WalletManager from "../Wallet Manager/WalletManager";
 
 const { Area2D } = godot;
 
 export default class Gold extends Area2D {
-  amount: number;
+  @property({ default: 0 }) amount: number;
   
   _ready() {
     this.connect(Area2D.body_entered, this, "checkBatAttract");
@@ -24,6 +25,8 @@ export default class Gold extends Area2D {
   }
   
   public collect() {
+    // WalletManager.addGold(this.amount);
+    
     WalletManager.addGold(this.amount);
     this.queue_free();
   }

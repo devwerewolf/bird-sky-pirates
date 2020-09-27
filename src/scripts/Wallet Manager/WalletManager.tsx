@@ -1,13 +1,14 @@
 const { Node2D } = godot;
 
 export default class WalletManager extends Node2D {
-  static gold = 0;
+  static gold: number = 0;
   
-  static addGold(amount: number) {
+  public static addGold(amount: number) {
     WalletManager.gold += amount;
+    godot.print(WalletManager.gold);
   }
   
-  static subtractGold(amount: number) {
+  public static subtractGold(amount: number) {
     WalletManager.gold -= amount;
   }
 }

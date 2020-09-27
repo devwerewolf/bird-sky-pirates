@@ -3,6 +3,7 @@ import Bird, { BirdState } from "../Bird/Bird";
 import Bat from "../Bat/Bat";
 import Peacock from "../Peacock/Peacock";
 import Crow from "../Crow/Crow";
+import Gold from "../Gold/Gold";
 const { print } = godot;
 
 export default class Flamingo extends Bird {
@@ -43,12 +44,14 @@ export default class Flamingo extends Bird {
   }
   
   //#region Bat
-  onBatSonarDiscover(bat: Bat) {
+  onBatSonarDiscover(bat: Bat, goldShiny: Gold) {
     const crows = this.subordinates.filter(bird => bird instanceof Crow) as Crow[];
     crows.forEach(crow => {
       // TODO: Check if crow is currently busy
-      crow.setTarget(bat.position);
+      crow.setCurrentGoldShiny(goldShiny);
+      crow.setTarget(goldShiny.position);
       crow.changeState(BirdState.Move);
+      crow.connect(Bird.OnIdle, this, "onCrowIdle");
       
       bat.setTarget(this.position);
       bat.changeState(BirdState.Move);
@@ -57,5 +60,16 @@ export default class Flamingo extends Bird {
   //#endregion
   
   //#region Crow
+  onCrowIdle(crow: Crow) {
+    crow.changeState(BirdState.Special);
+    crow.connect(Crow.OnCollectGold, this, "onCrowCollectGold");
+  }
+  
+  onCrowCollectGold(crow: Crow) {
+    crow.setTarget(this.position);
+    crow.changeState(BirdState.Move);
+    crow.disconnect(Bird.OnIdle, this, "onCrowIdle");
+    crow.disconnect(Crow.OnCollectGold, this, "onCrowCollectGold");
+  }
   //#endregion
 }

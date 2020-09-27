@@ -12,7 +12,7 @@ export default class Bat extends Bird {
     // this.emit_signal(Bat.OnSonarDiscover, this);
     
     if (this.goldShiny) {
-      this.emit_signal(Bat.OnSonarDiscover, this);
+      this.emit_signal(Bat.OnSonarDiscover, this, this.goldShiny);
       this.goldShiny = null;
     }
     
