@@ -6,7 +6,6 @@ import Crow from "../Crow/Crow";
 const { print } = godot;
 
 export default class Flamingo extends Bird {
-  @property({ type: godot.VariantType.TYPE_NODE_PATH }) subordinateNode: godot.VariantType.TYPE_NODE_PATH;
   subordinates: Bird[];
   
   constructor() {
@@ -55,5 +54,8 @@ export default class Flamingo extends Bird {
       bat.changeState(BirdState.Move);
     });
   }
+  //#endregion
+  
+  //#region Crow
   //#endregion
 }
